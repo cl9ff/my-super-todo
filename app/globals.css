@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Основные цвета приложения */
+  --color-bg-page: #4D3D45;      /* Тёмный фон всей страницы */
+  --color-bg-main: #77636D;      /* Основной фон контента */
+  --color-accent: #FC76A1;       /* Акцентный розовый для кнопок и важных элементов */
+  --color-text-light: #ffffff;   /* Белый текст */
+  --color-text-muted: rgba(255, 255, 255, 0.6); /* Приглушённый белый */
+  --color-elements: #33202A;
+  
+  /* Tailwind CSS переменные (стандартные) */
+  --background: #4D3D45;
+  --foreground: #ffffff;
 }
 
+/* Кастомные цвета для Tailwind */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg-page: #4D3D45;
+  --color-elements: #33202A;
+  --color-bg-main: #77636D;
+  --color-accent: #FC76A1;
+  --color-text-light: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Убираем тёмную тему по умолчанию, используем свои цвета */
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-bg-page);
+  color: var(--color-text-light);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+border-bg-elements {
+  border-color: var(--color-bg-elements);
+}
+
+/* Стили для скроллбара (опционально, красиво) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-page);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(252, 118, 161, 0.8);
 }
