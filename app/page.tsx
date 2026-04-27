@@ -1,22 +1,36 @@
 "use client"
-import { useEffect, useState } from 'react'; 
+import { useEffect, useState } from 'react';
 import TaskList from '@/components/ui/TaskList';
 import TaskInput from '@/components/ui/TaskInput';
 import Sidebar from '@/components/ui/Sidebar';
 import PageHeader from '@/components/ui/PageHeader';
 
+interface SubTask {
+  id: number;
+  text: string;
+  completed: boolean;
+}
+
+interface Task {
+  id: number;
+  text: string;
+  completed: boolean;
+  children: SubTask[];
+}
+
 export default function Home() {
-  const [todoList, setTodoList] = useState<{ id: number, text: string, completed: boolean }[]>([])
+  const [todoList, setTodoList] = useState<Task[]>([])
 
   const handleAddTask = (taskText: string) => {
     if (taskText.trim() === "") return;
-    
+
     const newTodo = {
       id: Date.now(),
       text: taskText,
-      completed: false
+      completed: false,
+      children: []
     }
-    
+
     setTodoList([...todoList, newTodo])
   }
 
@@ -48,19 +62,16 @@ export default function Home() {
     <div className='flex min-h-screen'>
       <Sidebar />
       <main className='flex-1 p-8'>
-        {/* PageHeader на всю ширину */}
-        <PageHeader 
+        <PageHeader
           title="Школа"
           activeCount={notCompletedList().length}
           completedCount={completedList().length}
         />
-        
-        {/* Две одинаковые колонки снизу */}
         <div className='grid grid-cols-2 gap-8 mt-8'>
           {/* Колонка активных задач */}
           <div>
-            <TaskInput onAddTask={handleAddTask} />            
-            <TaskList 
+            <TaskInput onAddTask={handleAddTask} />
+            <TaskList
               tasks={notCompletedList()}
               title="Активные задачи"
               isCompletedList={false}
@@ -68,7 +79,6 @@ export default function Home() {
               onDelete={handleDeleteTask}
             />
           </div>
-          
           {/* Колонка выполненных задач */}
           <div>
             <TaskList

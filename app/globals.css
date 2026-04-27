@@ -1,14 +1,23 @@
 @import "tailwindcss";
 
+/* * {
+  box-sizing: border-box;
+} */
+
 :root {
   /* Основные цвета приложения */
-  --color-bg-page: #4D3D45;      /* Тёмный фон всей страницы */
-  --color-bg-main: #77636D;      /* Основной фон контента */
-  --color-accent: #FC76A1;       /* Акцентный розовый для кнопок и важных элементов */
-  --color-text-light: #ffffff;   /* Белый текст */
-  --color-text-muted: rgba(255, 255, 255, 0.6); /* Приглушённый белый */
+  --color-bg-page: #4D3D45;
+  /* Тёмный фон всей страницы */
+  --color-bg-main: #77636D;
+  /* Основной фон контента */
+  --color-accent: #FC76A1;
+  /* Акцентный розовый для кнопок и важных элементов */
+  --color-text-light: #ffffff;
+  /* Белый текст */
+  --color-text-muted: rgba(255, 255, 255, 0.6);
+  /* Приглушённый белый */
   --color-elements: #33202A;
-  
+
   /* Tailwind CSS переменные (стандартные) */
   --background: #4D3D45;
   --foreground: #ffffff;
